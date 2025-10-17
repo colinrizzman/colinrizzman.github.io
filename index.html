@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Colin Rizzman — AI Chad</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="manifest" href='data:application/manifest+json,{"display":"standalone"}' />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <meta name="description" content="The latest AI releases and projects by Colin Rizzman.">
+  <meta property="og:description" content="The latest AI releases and projects by Colin Rizzman.">
+  <meta name="twitter:description" content="The latest AI releases and projects by Colin Rizzman.">
+  <meta itemprop="description" content="The latest AI releases and projects by Colin Rizzman.">
+
+  <link rel="icon" href="favicon.jpg" type="image/jpeg">
+  <link rel="shortcut icon" href="ifavicon.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="favicon.jpg">
+
+  <meta property="og:image" content="https://colinrizzman.com/favicon.jpg">
+  <meta name="twitter:image" content="https://colinrizzman.com/colinrizzman.jpg">
+  <meta itemprop="image" content="https://colinrizzman.com/favicon.jpg">
+
+  <meta property="og:site_name" content="Colin Rizzman">
+  <meta property="og:title" content="Colin Rizzman">
+  <meta name="twitter:title" content="Colin Rizzman">
+  <meta itemprop="name" content="Colin Rizzman">
+
+  <meta property="og:url" content="https://ColinRizzman.com">
+
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffbf00">
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --panel: #0f1720;
+      --text: #e5ecf5;
+      --muted: #9fb0c0;
+      --soft: #1a2430;
+      --accent: #5cc8ff;
+      --accent-2: #8affc1;
+      --shadow: 0 10px 30px rgba(0,0,0,.45);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(92,200,255,.12), transparent 60%),
+                  radial-gradient(1000px 500px at 10% -10%, rgba(138,255,193,.10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      letter-spacing: .2px;
+    }
+
+    a { color: var(--accent); }
+
+    .wrapper { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
+
+    header.site {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+      border: 1px solid var(--soft);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      color: var(--accent);
+      text-shadow: 0 0 10px rgba(92,200,255,0.3);
+    }
+
+    .release { position: relative; overflow: hidden; border: 1px solid var(--soft); border-radius: 14px; background: var(--panel); transition: transform .12s ease, border-color .2s ease, background .2s ease; }
+    .release:hover { transform: translateY(-2px); border-color: rgba(92,200,255,.5); }
+
+    .release a.stretched-link { position: absolute; inset: 0; z-index: 1; text-indent: -9999px; }
+
+    .release-inner { display: grid; grid-template-columns: 120px 1fr; gap: 18px; padding: 16px; align-items: center; position: relative; z-index: 0; }
+    @media (max-width: 560px) { .release-inner { grid-template-columns: 1fr; } }
+
+    .release img.item-img { width: 100px; height: auto; border-radius: 10px; border: 1px solid var(--soft); background: #0d141d; }
+
+    .release h3, .release h3 a { font-family: 'Orbitron', sans-serif; letter-spacing: 0.5px; color: var(--text); text-decoration: none; margin: 2px 0 6px; font-size: 18px; }
+    .release h3 a:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+
+    .desc { color: var(--muted); margin: 6px 0 10px; font-size: 14px; }
+
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag { font-size: 12px; padding: 6px 8px; border-radius: 999px; background: #0d141d; border: 1px solid var(--soft); color: var(--muted); }
+
+    .search { min-width: 240px; }
+    .search input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--soft); background: #0d141d; color: var(--text); }
+
+    .header-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .subtitle { color: var(--muted); margin: 0; }
+    .tag-filter { display: flex; gap: 10px; flex-wrap: wrap; }
+    .chip { cursor: pointer; user-select: none; padding: 8px 10px; border-radius: 999px; border: 1px solid var(--soft); background: #0d141d; color: var(--muted); font-size: 13px; }
+    .chip.active { border-color: var(--accent); color: var(--text); }
+
+    section.releases { margin-top: 26px; }
+    .release-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+    footer { margin-top: 40px; color: var(--muted); font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="site" role="banner">
+      <div class="header-top">
+        <h1>Colin Rizzman</h1>
+        <div class="search">
+          <input id="q" type="search" placeholder="Search…" autocomplete="off" />
+        </div>
+      </div>
+      <div class="header-bottom">
+        <p class="subtitle">Researcher & body builder in artificial rizztelligence.</p>
+        <div class="tag-filter" role="group" aria-label="Filter by tag">
+          <button class="chip active" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="love" aria-pressed="false">Love</button>
+          <button class="chip" data-filter="zodiac" aria-pressed="false">Zodiac</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="releases" aria-labelledby="releases-heading">
+      <h2 id="releases-heading" style="position:absolute;left:-9999px;">Releases</h2>
+      <ol class="release-list" id="releaseList" reversed>
+
+        <li class="release" data-tags="love mlp">
+          <a href="https://colinrizzman.com/romance" class="stretched-link" target="_blank">Neural Zodiac</a>
+          <div class="release-inner">
+            <img class="item-img" src="neuralromance.png" alt="Release image" />
+            <div class="content">
+              <h3>Neural Romance</h3>
+              <p class="desc">Your chances in finding love</p>
+              <div class="tags">
+                <span class="tag">MLP</span><span class="tag">Love</span>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="release" data-tags="love zodiac mlp">
+          <a href="https://neuralzodiac.github.io" class="stretched-link" target="_blank">Neural Zodiac</a>
+          <div class="release-inner">
+            <img class="item-img" src="https://neuralzodiac.github.io/favicon.png" alt="Release image" />
+            <div class="content">
+              <h3>Neural Zodiac</h3>
+              <p class="desc">Polyamorus love compatibility</p>
+              <div class="tags">
+                <span class="tag">MLP</span><span class="tag">Zodiac</span><span class="tag">Love</span>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Colin Rizzbotics - <a href="https://github.com/colinrizzman">GitHub</a> - <a href="https://huggingface.co/colinrizzman">Hugging Face</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // --- Search + Tag Filter ---
+    const searchInput = document.getElementById('q');
+    const releases = Array.from(document.querySelectorAll('.release'));
+    const chips = Array.from(document.querySelectorAll('.chip'));
+
+    function getActiveFilter() {
+      const activeChip = chips.find(c => c.classList.contains('active'));
+      return (activeChip?.dataset.filter || 'all').toLowerCase();
+    }
+
+    function applyFilters() {
+      const term = (searchInput.value || '').toLowerCase().trim();
+      const active = getActiveFilter();
+
+      releases.forEach(r => {
+        const title = r.querySelector('h3')?.textContent.toLowerCase() || '';
+        const desc = r.querySelector('.desc')?.textContent.toLowerCase() || '';
+        const tags = (r.getAttribute('data-tags') || '').toLowerCase();
+
+        const matchesTerm = !term || title.includes(term) || desc.includes(term) || tags.includes(term);
+        const matchesTag = active === 'all' || tags.split(/\s+/).includes(active);
+
+        r.style.display = (matchesTerm && matchesTag) ? '' : 'none';
+      });
+    }
+
+    // Search typing
+    searchInput.addEventListener('input', applyFilters);
+
+    // Chip click handling
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed','false'); });
+        chip.classList.add('active');
+        chip.setAttribute('aria-pressed','true');
+        applyFilters();
+      });
+    });
+
+    // Initial render
+    applyFilters();
+  </script>
+</body>
+</html>
