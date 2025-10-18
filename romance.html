@@ -112,7 +112,7 @@ function forward(x)
   const h3 = dense_rowbias(h2, L3, 32, 32, true);
   const h4 = dense_rowbias(h3, L4, 32, 32, true);
   const h5 = dense_rowbias(h4, L5, 32, 32, true);
-  return dense_rowbias(h5, L6, 32, 1,  false)[0];
+  return     dense_rowbias(h5, L6, 32, 1,  false)[0];
 }
 
 const TRAITS = [
