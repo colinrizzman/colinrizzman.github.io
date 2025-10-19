@@ -129,7 +129,7 @@ const barFill = document.getElementById('barFill');
 const values = new Array(27).fill(5);
 
 // Convert to 0..1 floats *after* reading sliders.
-function toScaled(){ return Float32Array.from(values.map(v => v / 10)); }
+function toScaled(){ return Float32Array.from(values.map(v => Math.max((v - 1), 0) / 9)); }
 
 function renderSliders(){
   slidersEl.innerHTML = '';
@@ -161,7 +161,7 @@ function update(){
 
 document.getElementById('resetBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=5; renderSliders(); update(); });
 document.getElementById('randBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=Math.round(Math.random()*10); renderSliders(); update(); });
-document.getElementById('minBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=0; renderSliders(); update(); });
+document.getElementById('minBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=1; renderSliders(); update(); });
 document.getElementById('maxBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=10; renderSliders(); update(); });
 
 renderSliders();
