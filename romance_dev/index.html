@@ -3,10 +3,8 @@
 <body>
 <h2>Files in this folder</h2>
 <ul id="fileList"></ul>
-
 <script>
 const api = "https://api.github.com/repos/colinrizzman/colinrizzman.github.io/contents/romance_dev?ref=main";
-
 fetch(api)
   .then(r => {
     if (!r.ok) throw new Error(`HTTP ${r.status} – ${r.statusText}`);
@@ -14,16 +12,12 @@ fetch(api)
   })
   .then(items => {
     if (!Array.isArray(items)) throw new Error(items?.message || "Unexpected response");
-    // sort: folders first, then files
     items.sort((a, b) => (a.type === b.type) ? a.name.localeCompare(b.name) : a.type === "dir" ? -1 : 1);
-
     const ul = document.getElementById('fileList');
     for (const f of items) {
+      if (f.name === "index.html") continue;
       const li = document.createElement('li');
-
-      // Link to things in the same folder (this page lives in /romance_dev/)
       const href = f.type === "dir" ? `${f.name}/` : `${f.name}`;
-
       li.innerHTML = `<a href="${href}">${f.name}</a>`;
       ul.appendChild(li);
     }
