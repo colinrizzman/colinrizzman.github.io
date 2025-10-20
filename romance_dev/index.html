@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Files in this folder</h2>
+<ul id="fileList"></ul>
+<script>
+fetch("https://api.github.com/repos/colinrizzman/colinrizzman.github.io/romance_dev")
+  .then(r => r.json())
+  .then(files => {
+    const ul = document.getElementById('fileList');
+    files.forEach(f => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${f.name}">${f.name}</a>`;
+      ul.appendChild(li);
+    });
+  });
+</script>
+</body>
+</html>
