@@ -3,16 +3,35 @@
 <body>
 <h2>Files in this folder</h2>
 <ul id="fileList"></ul>
+
 <script>
-fetch("https://api.github.com/repos/colinrizzman/colinrizzman.github.io/romance_dev")
-  .then(r => r.json())
-  .then(files => {
+const api = "https://api.github.com/repos/colinrizzman/colinrizzman.github.io/contents/romance_dev?ref=main";
+
+fetch(api)
+  .then(r => {
+    if (!r.ok) throw new Error(`HTTP ${r.status} – ${r.statusText}`);
+    return r.json();
+  })
+  .then(items => {
+    if (!Array.isArray(items)) throw new Error(items?.message || "Unexpected response");
+    // sort: folders first, then files
+    items.sort((a, b) => (a.type === b.type) ? a.name.localeCompare(b.name) : a.type === "dir" ? -1 : 1);
+
     const ul = document.getElementById('fileList');
-    files.forEach(f => {
+    for (const f of items) {
       const li = document.createElement('li');
-      li.innerHTML = `<a href="${f.name}">${f.name}</a>`;
+
+      // Link to things in the same folder (this page lives in /romance_dev/)
+      const href = f.type === "dir" ? `${f.name}/` : `${f.name}`;
+
+      li.innerHTML = `<a href="${href}">${f.name}</a>`;
       ul.appendChild(li);
-    });
+    }
+  })
+  .catch(err => {
+    document.getElementById('fileList').innerHTML =
+      `<li>Failed to load listing: ${err.message}</li>`;
+    console.error(err);
   });
 </script>
 </body>
