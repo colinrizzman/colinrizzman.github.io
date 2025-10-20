@@ -94,7 +94,7 @@ const L7 = new Float32Array([0.026271982,-0.014598065,-0.009735971,-0.012099832,
 function celu(x, alpha = 1.0) {
   return x >= 0 ? x : alpha * (Math.exp(x / alpha) - 1);
 }
-function dense_rowbias(src, w, inDim, outDim, usegelu = true)
+function dense_rowbias(src, w, inDim, outDim, usecelu = true)
 {
   const dst = new Float32Array(outDim);
   const stride = inDim + 1;
@@ -103,7 +103,7 @@ function dense_rowbias(src, w, inDim, outDim, usegelu = true)
     const base = i * stride;
     let s = w[base + inDim];
     for(let k = 0; k < inDim; k++){s += w[base + k] * src[k];}
-    dst[i] = usegelu ? celu(s) : s;
+    dst[i] = usecelu ? celu(s) : s;
   }
   return dst;
 }
