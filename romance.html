@@ -160,7 +160,7 @@ function update(){
 }
 
 document.getElementById('resetBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=5; renderSliders(); update(); });
-document.getElementById('randBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=Math.round(Math.random()*10); renderSliders(); update(); });
+document.getElementById('randBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=1+Math.round(Math.random()*9); renderSliders(); update(); });
 document.getElementById('minBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=1; renderSliders(); update(); });
 document.getElementById('maxBtn').addEventListener('click', () => { for(let i=0;i<27;i++) values[i]=10; renderSliders(); update(); });
 
