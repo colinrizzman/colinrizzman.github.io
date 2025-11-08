@@ -1,16 +1,44 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  <meta name="darkreader-lock"/>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="manifest" href='data:application/manifest+json,{"display":"standalone"}' />
+  <meta name="mobile-web-app-capable" content="yes" />
+
   <title>Neural Romance v2</title>
+  <meta name="description" content="Calculate your chances of finding love">
+
+  <link rel="icon" href="romance.png" type="image/png">
+  <link rel="shortcut icon" href="romance.png" type="image/png">
+  <link rel="apple-touch-icon" href="romance.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://colinrizzman.github.io/romance.png">
+  <meta property="og:title" content="Calculate your chances of finding love">
+  <meta property="og:description" content="A neural network calculates your chance of finding love.">
+  <meta property="og:site_name" content="Neural Romance">
+  <meta property="og:url" content="https://colinrizzman.github.io/romance">
+
+  <meta name="twitter:title" content="Calculate your chances of finding love">
+  <meta name="twitter:description" content="A neural network calculates your chance of finding love.">
+  <meta name="twitter:image" content="https://colinrizzman.github.io/romance.png">
+
+  <meta itemprop="name" content="Calculate your chances of finding love">
+  <meta itemprop="description" content="A neural network calculates your chance of finding love.">
+  <meta itemprop="image" content="https://colinrizzman.github.io/romance.png">
+
+  <meta name="theme-color" content="#5cc8ff">
+
   <style>
     :root {
       --bg:#0b0f14;
-      --panel:#121922;
-      --text:#e8eef6;
+      --panel:#1a2430;
+      --text:#5cc8ff;
       --muted:#9fb0c4;
-      --accent:#5ab0ff;
+      --accent:#5cc8ff;
       --accent-2:#7cf29c;
       --danger:#ff6b6b;
       --border:#223042;
@@ -24,6 +52,7 @@
       background: radial-gradient(1200px 800px at 10% 0%, #0d1420, #0b0f14 60%);
       background-attachment: fixed;
       color: var(--text);
+      scrollbar-color: var(--text) var(--bg)
     }
 
     .container {
@@ -37,8 +66,8 @@
     .card {
       width: 100%;
       max-width: 1100px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
+      background:var(--panel);
+      border: 0px;
       border-radius: var(--radius);
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
       padding: 24px;
@@ -74,14 +103,15 @@
     select {
       width:100%; background:#0f1622; color:var(--text); border-radius:10px;
       border:1px solid var(--border); padding:10px 12px;
+      color: var(--accent-2);
     }
 
     .score {
       display:grid; gap:10px; grid-template-columns:1fr auto; align-items:center; margin-top:18px;
       padding-top:14px; border-top:1px dashed var(--border);
     }
-    .meter { position:relative; height:16px; border-radius:999px; background:#0f1622; border:1px solid var(--border); overflow:hidden; }
-    .bar { position:absolute; inset:0; width:0%; background:linear-gradient(90deg,var(--danger),var(--accent),var(--accent-2)); transition:width .25s ease; }
+    .meter { position:relative; height:16px; border-radius:999px; background:#0f1622; border:0px; overflow:hidden; }
+    .bar { position:absolute; inset:0; width:0%; background:#2563eb }
     .percent { font-size:clamp(28px,4vw,40px); font-weight:700; }
     .detail { color:var(--muted); font-size:13px; }
   </style>
