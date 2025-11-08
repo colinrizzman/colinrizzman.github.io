@@ -40,7 +40,6 @@
       --muted:#9fb0c4;
       --accent:#5cc8ff;
       --accent-2:#7cf29c;
-      --danger:#ff6b6b;
       --border:#223042;
       --radius:14px;
     }
@@ -55,7 +54,6 @@
       color: var(--text);
       scrollbar-color: var(--text) var(--bg)
     }
-
     .container {
       min-height: 100vh;
       display: flex;
@@ -63,7 +61,6 @@
       justify-content: center;
       padding: 40px 16px;
     }
-
     .card {
       width: 100%;
       max-width: 1100px;
@@ -73,7 +70,6 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.35);
       padding: 24px;
     }
-
     .header-controls {
       display: flex;
       justify-content: space-between;
@@ -82,18 +78,15 @@
       gap: 10px;
       margin-bottom: 20px;
     }
-
     .header-controls h1 {
       margin: 0;
       font-size: clamp(22px, 3.2vw, 34px);
     }
-
     .btn {
       appearance:none; border:1px solid var(--border); color:var(--text);
       background:#162131; padding:10px 14px; border-radius:10px; cursor:pointer;
     }
     .btn:hover { border-color: var(--accent); }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -106,7 +99,6 @@
       border:1px solid var(--border); padding:10px 12px;
       color: var(--accent-2);
     }
-
     .score {
       display:grid; gap:10px; grid-template-columns:1fr auto; align-items:center; margin-top:18px;
       padding-top:14px; border-top:1px dashed var(--border);
