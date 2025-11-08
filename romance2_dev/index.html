@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ul id="fileList"></ul>
+<script>
+const api = "https://api.github.com/repos/colinrizzman/colinrizzman.github.io/contents/romance2_dev?ref=main";
+fetch(api)
+  .then(r => {
+    if (!r.ok) throw new Error(`HTTP ${r.status} – ${r.statusText}`);
+    return r.json();
+  })
+  .then(items => {
+    if (!Array.isArray(items)) throw new Error(items?.message || "Unexpected response");
+    items.sort((a, b) => (a.type === b.type) ? a.name.localeCompare(b.name) : a.type === "dir" ? -1 : 1);
+    const ul = document.getElementById('fileList');
+    for (const f of items) {
+      if (f.name === "index.html") continue;
+      const li = document.createElement('li');
+      const href = f.type === "dir" ? `${f.name}/` : `${f.name}`;
+      li.innerHTML = `<a href="${href}">${f.name}</a>`;
+      ul.appendChild(li);
+    }
+  })
+  .catch(err => {
+    document.getElementById('fileList').innerHTML =
+      `<li>Failed to load listing: ${err.message}</li>`;
+    console.error(err);
+  });
+</script>
+</body>
+</html>
