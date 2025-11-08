@@ -3,7 +3,7 @@
 <body>
 <ul id="fileList"></ul>
 <script>
-const api = "https://api.github.com/repos/colinrizzman/colinrizzman.github.io/contents/romance_dev2?ref=main";
+const api = "https://api.github.com/repos/colinrizzman/colinrizzman.github.io/contents/romance2_dev?ref=main";
 fetch(api)
   .then(r => {
     if (!r.ok) throw new Error(`HTTP ${r.status} – ${r.statusText}`);
